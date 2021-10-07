@@ -19,7 +19,7 @@ function App() {
             {/* <MyBadge text="NEW!!" color="info" /> */}
             {/* <SingleBook book={fantasyBooks[0]} /> */}
             <Route path="/" exact render={() => <BookList books={fantasyBooks} />} />
-            <Route path="/Registration" exact component={Registration} />
+            <Route path="/Register" exact component={Registration} />
           </header>
       </div>
     </Router>

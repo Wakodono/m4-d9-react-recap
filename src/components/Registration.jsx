@@ -10,12 +10,26 @@ const Registration = () => {
     confirmPassword: "",
   });
 
-  handleInput = () => {
+  const handleInput = (key, value) => {
     setRegistration({
       ...registration,
       [key]: value,
     });
   };
+
+  const isFormComplete = () => {
+    let formComplete = false
+    if (
+      registration.name.length > 2 &&
+      registration.surname.length > 3 &&
+      registration.password.length > 8 &&
+      registration.password.match(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/) &&
+      registration.password === registration.confirmPassword
+    ){
+      formComplete = true
+    }
+    return formComplete
+  }
 
   return (
     <Form className="my-3">
@@ -72,7 +86,7 @@ const Registration = () => {
         />
       </Form.Group>
 
-      <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit" disabled={!isFormComplete()}>
         Submit
       </Button>
     </Form>
